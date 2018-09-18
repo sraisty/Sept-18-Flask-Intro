@@ -49,6 +49,11 @@ def say_hello():
               <option value = "wonderful">Wonderful </option>
               <option value = "lovely">Lovely </option>
             </select>
+            <br>
+            What level of niceness do you want?
+            <input type="radio" name="nicelevel" value=2>Super
+            <input type="radio" name="nicelevel" value=1>Sort-Of
+            <input type="radio" name="nicelevel" value=0>Meh
             <input type="submit" value="Compliment Me">
         </form>
 
@@ -61,6 +66,7 @@ def say_hello():
               <option value = "dumb">Dumb</option>
               <option value = "ugly">Ugly</option>
             </select>
+            <br>
             <input type="submit" value="Insult Me">
         </form>
       </body>
@@ -76,6 +82,9 @@ def greet_person():
 
     # compliment = choice(AWESOMENESS)
     compliment = request.args.get("compliment")
+    nicelevel = request.args.get("nicelevel")
+    compliment = "really "*int(nicelevel) + compliment
+
 
     return """
     <!doctype html>
